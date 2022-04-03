@@ -1,46 +1,32 @@
-# Getting Started with Create React App
+# Hacke News - Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Technical test for the Front-end position
 
-## Available Scripts
+## CHALLENGE
 
-In the project directory, you can run:
+**Context:** We would like you to build a small responsive web application to test your knowledge of Front End Development and related technologies.
 
-### `npm start`
+### STACK
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You must use the following technologies to build the app:
+- The latest version of the frameworks: React or Angular
+- HTML/CSS only for building the UI components
+- Deployment of the web app on Netlify from your Git repository using the New Site from Git workflow
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### API
 
-### `npm test`
+The web application must request data to the Hackers News public API. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### FUNCTIONALITY
 
-### `npm run build`
+The selected filter should persist on the local storage
+- The favorited posts should persist on the local storage
+- The web app is expected to work as a responsive web application
+- When clicking on the row, a new tab should be open with the link of the post (story_url)
+- Clicking on the “like button” should not trigger the opening of the post URL link
+- When hovering on the row, apply opacity to the entire row and its children (texts, icons, like button, etc)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### UI EXPECTED
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image](https://user-images.githubusercontent.com/47092867/161432131-7bde4b70-c138-4a87-a13e-0ec8860710a5.png)
