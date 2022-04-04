@@ -1,10 +1,10 @@
-import React from 'react'
 import { ListOfGift } from '../../common/ListOfNews'
 import { useNews } from '../../../hooks/useNews'
 //const showAllNewsBy = ['All', 'My faves']
 
 export const Home = () => {
-  const {news} = useNews()
+  const {news} = useNews({keyword: 'angular'})
+  console.log(news)
   return (
     <>
     <section>

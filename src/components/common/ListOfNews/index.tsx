@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
-import getNews from '../../../services/getNews'
+import { newsContainer } from '../../../interfaces/interfaces'
+import { INewObj } from '../../../interfaces/interfaces'
 
-export const ListOfGift = ({news}) => {
+export const ListOfGift = ({news}:newsContainer) => {
+    console.log('news')
     console.log(news)
   return (
-    <div>ListOfGift</div>
+    <div>{
+      
+    }</div>
   )
 }
