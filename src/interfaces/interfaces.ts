@@ -6,7 +6,7 @@ export interface INewObj{
         story_url:string;
 }
 export interface newsContainer{
-    news: INewObj | INewObj[]
+    news: INewObj[]
 }
 // NEWS CONTEXT TYPES
 export type NewsContextState = {
