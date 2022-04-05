@@ -1,6 +1,6 @@
 import { newsContainer } from '../../../interfaces/interfaces'
 import {FaRegHeart, FaHeart, FaRegClock} from 'react-icons/fa'
-import './listOfCards.css'
+import './listOfNews.css'
 
 interface ITimer{
   dateType: string;
@@ -45,14 +45,17 @@ export const ListOfNews = ({news}:newsContainer) => {
         const create_at = timeSince(data['created_at'])
        return(
        <div 
-        key={data.story_id+i} 
+        key={data.story_id+i+data.author} 
         className='nCard'>
           <div>
            <span className='nCard__date-autor'>
              <FaRegClock className='nCard__title-clock'/>&nbsp;
              {create_at} by {data.author}
             </span>
-            <p className='nCard__title'>{data.story_title}</p>
+            <p className='nCard__title'>{
+            (data.story_title != null)? data.story_title 
+            : 'Ops, someone forgot to write the title of this news. :('
+            }</p>
           </div>
           <div className='nCard__like'>
             {
@@ -60,8 +63,6 @@ export const ListOfNews = ({news}:newsContainer) => {
               ?<FaHeart className='nCard__like--true' />
               :<FaRegHeart className='nCard__like--false'/>
             }
-          
-          
           </div>
         </div>
       )

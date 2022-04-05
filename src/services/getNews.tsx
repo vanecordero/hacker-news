@@ -18,9 +18,8 @@ const getResponse = (apiResponse:Resp )=> {
   return []
 }
 
-export default function getNews({keyword= "angular", page = 0}:searchProps) {
+export default function getNews({keyword= "", page = 0}:searchProps) {
     const apiURL = `${API_URL}/search_by_date?query=${keyword}&page=${page}`
-  
     return fetch(apiURL)
       .then((res) => res.json())
     .then(getResponse)

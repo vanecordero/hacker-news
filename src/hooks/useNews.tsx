@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { TodosContext} from "../context/newsProvider";
+import { NewsContext} from "../context/newsProvider";
 import getNews from "../services/getNews";
 import { INewObj } from "../interfaces/interfaces";
 
@@ -13,7 +13,7 @@ export const useNews = ({ keyword = null }:keyProp) => {
 
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(INITIAL_PAGE);
-  const { news, setNewNews } = useContext(TodosContext);
+  const { news, setNewNews } = useContext(NewsContext);
 
   //Get the last query Search
   const keywordToUse:string | null = keyword || localStorage.getItem("lastKeyword");
