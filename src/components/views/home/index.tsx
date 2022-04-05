@@ -1,20 +1,20 @@
-import React, {useEffect} from 'react';
+import {useEffect, useState, useContext} from 'react';
 import { ListOfNews } from '../../common/ListOfNews'
-//import { useNews } from '../../../hooks/useNews'
-import './home.css'
 import { NewsContext } from '../../../context/newsProvider';
-import { useContext } from 'react';
-import getNews from '../../../services/getNews';
 import { INewObj } from '../../../interfaces/interfaces';
+import getNews from '../../../services/getNews';
 import useLocalStorage from '../../../hooks/useLocalStorage';
 
-const showAllNewsBy = ['All', 'My faves'];
+import { useLocation  } from 'wouter';
+import './home.css'
+
 const news_name = ['Angular', 'Reacts', 'Vuejs'];
 
 export const Home: React.FunctionComponent = () => {
-  
+  const [location] = useLocation()
   const {news, setNewNews} = useContext(NewsContext)
-  const [item, saveItem] = useLocalStorage('lastSearch');
+  const [item, saveItem] = useLocalStorage('lastSearch');  
+  //const [favesNews, setFavesNews] = useState<INewObj[]>([])
 
   //handle change event from option search news
   const handleChange=(event: React.ChangeEvent<HTMLSelectElement>)=>{
@@ -25,23 +25,17 @@ export const Home: React.FunctionComponent = () => {
     });
     saveItem('lastSearch', event.target.value)
   }
+/*
+  useEffect(function(){
+    let favN = localStorage.getItem('favesNews');
+    if(!!favN) setNewNews(JSON.parse(favN) as INewObj[]);
+  }, [setNewNews, news])
+*/
 
- 
-
+console.log(location)
+console.log(news)
   return (
     <>
-    
-    <section>
-      <nav>
-        <ol>
-          {
-            showAllNewsBy.map((name, i) => <ul 
-            key={name+i}
-            className='nav__link'
-            >{name}</ul>)
-          }
-        </ol>
-      </nav>
       <div>
       <form>
         <div>
@@ -61,7 +55,6 @@ export const Home: React.FunctionComponent = () => {
       <div className='news-container'>
         <ListOfNews news={news} />
       </div>
-    </section>
     </>
   )
 }

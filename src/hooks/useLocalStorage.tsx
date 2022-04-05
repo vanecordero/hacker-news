@@ -1,13 +1,13 @@
 import { useState } from "react";
-
-function useLocalStorage(itemName:string='') {
+import { INewObj } from "../interfaces/interfaces";
+function useLocalStorage(itemName:string='', initialValue:string | INewObj[] ='') {
 
   const localStorageItem = localStorage.getItem(itemName);
   let parsedItem;
 
-  if(localStorageItem === '' || !localStorageItem){
-    localStorage.setItem(itemName, JSON.stringify(''));
-    parsedItem ='';
+  if(localStorageItem===''||!localStorageItem){
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem =initialValue;
   }else{
     parsedItem = JSON.parse(localStorageItem);
   }
