@@ -1,24 +1,28 @@
-import { ListOfGift } from '../../common/ListOfNews'
+import { ListOfNews } from '../../common/ListOfNews'
 import { useNews } from '../../../hooks/useNews'
-//const showAllNewsBy = ['All', 'My faves']
+import './home.css'
+
+const showAllNewsBy = ['All', 'My faves'];
 
 export const Home = () => {
   const {news} = useNews({keyword: 'angular'})
   console.log(news)
   return (
     <>
-    <section>
-      <h1>Hacker News</h1>
-    </section>
+    
     <section>
       <nav>
         <ol>
-          <li>All</li>
-          <li></li>
+          {
+            showAllNewsBy.map((name, i) => <ul 
+            key={name+i}
+            className='nav__link'
+            >{name}</ul>)
+          }
         </ol>
       </nav>
-      <div>
-        <ListOfGift news={news} />
+      <div className='news-container'>
+        <ListOfNews news={news} />
       </div>
     </section>
     </>

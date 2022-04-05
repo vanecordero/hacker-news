@@ -4,6 +4,7 @@ export interface INewObj{
         story_title:string;
         created_at:string;
         story_url:string;
+        story_id: number;
 }
 export interface newsContainer{
     news: INewObj[]

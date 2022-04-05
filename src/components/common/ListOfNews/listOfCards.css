@@ -1,0 +1,54 @@
+:root{
+    --card__like-bg-color: #f5f5f5;
+    --cars__title-font-color: #767676
+}
+
+.nCard{
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    height: 90px;
+    border-radius: 6px;
+    border: solid 1px #979797;
+    margin: 10px;
+}
+
+/* TEXT SIDE */
+.nCard div:first-child{
+    padding: 1rem;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.nCard__date-autor,
+.nCard__title-clock,
+.nCard__title{
+    color: var(--cars__title-font-color);
+}
+.nCard__date-autor,
+.nCard__title-clock{
+    opacity: 0.9;
+    font-size: 0.7rem;
+}
+.nCard__title{
+    margin: 5px 0;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* LIKE SIDE */
+.nCard__like{
+    width: 15%;
+    border-radius: 0 5px 5px 0;
+    background-color: var(--card__like-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nCard__like--true,
+.nCard__like--false{
+    color: #de2c30;
+    font-size: 1.5rem;
+}
+

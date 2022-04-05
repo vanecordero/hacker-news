@@ -6,6 +6,9 @@ import TodosProvider from "../../context/newsProvider";
 export const Layout = () => {
   return (
     <>
+    <section>
+      <h1 className="page-title">Hacker News</h1>
+    </section>
       <TodosProvider>
         <Switch>
           <Route component={Home} path="/" />
