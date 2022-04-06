@@ -33,9 +33,10 @@ const NewsProvider: FC = ({ children }) => {
   useEffect(function(){
   //TO get the last news search 
     let search = localStorage.getItem('latestSearch');
+    console.log(search);
     if(!!search){
       let parsedS = JSON.parse(search);
-      if (parsedS !== '' && location ==='/') {
+      if (parsedS !== '' && location ==='/' &&  parsedS !=='Select your news') {
         setLoad(true);
         getNews({ keyword:parsedS , page}).then((newsRes) => {
         const newsArray= newsRes[0];

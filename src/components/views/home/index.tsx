@@ -92,7 +92,7 @@ export const Home: React.FunctionComponent = () => {
       </form>
       </div>
       {
-        search === '' ? (<>
+        (search === '' ||search === 'Select your news' )? (<>
         <h4 className='no-search'>Please select a topic to search</h4>
         </>)
         :(<>
