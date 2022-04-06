@@ -3,7 +3,7 @@
   --cars__title-font-color: #767676;
   --border_radius: 6px;
 }
-.nCard_container{
+.nCard_container {
   padding: 0 1rem;
 }
 .nCard {
@@ -42,7 +42,7 @@
 .nCard__title {
   margin: 5px 0;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 /* LIKE SIDE */
@@ -60,7 +60,7 @@
 }
 
 /* Medium devices (tablets, 768px and up)*/
-@media  screen and (min-width: 768px){
+@media screen and (min-width: 768px) {
   .nCard {
     width: 350px;
     margin: 0.8rem 0;
@@ -68,11 +68,11 @@
 }
 
 /* Large devices (desktops, 992px and up)*/
-@media screen and (min-width: 992px) { 
+@media screen and (min-width: 992px) {
   .nCard {
     width: 500px;
   }
-  .nCard_container{
+  .nCard_container {
     padding: 0 3rem;
   }
 }
