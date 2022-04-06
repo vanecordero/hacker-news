@@ -1,8 +1,7 @@
 
 import './home.css';
 import { useContext, useState } from 'react';
-import { Pagination } from '../../common/Pagination'
-import { ListOfNews } from '../../common/ListOfNews'
+import { ListOfNews } from '../../common/ListOfNews';
 import { NewsContext } from '../../../context/newsProvider';
 import { INewObj } from '../../../interfaces/interfaces';
 import getNews from '../../../services/getNews';
