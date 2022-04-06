@@ -5,7 +5,7 @@ import { INewObj } from '../../../interfaces/interfaces';
 import { NewsContext } from '../../../context/newsProvider';
 import { useLocation } from 'wouter';
 import './listOfNews.css'
-
+import {Pagination} from '../Pagination'
 
 interface ITimer{
   dateType: string;
@@ -85,7 +85,7 @@ export const ListOfNews = ({news}:newsContainer) => {
 
 
   return (<>
-    {
+  {
       news.map((data, i)=>{
         const create_at = timeSince(data['created_at'])
        return(
@@ -114,5 +114,7 @@ export const ListOfNews = ({news}:newsContainer) => {
       )
       })
     }
+    
+  <Pagination/>
   </>)
 }

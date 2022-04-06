@@ -13,6 +13,8 @@ export interface newsContainer{
 export type NewsContextState = {
     news: INewObj[];
     setNewNews: (newsObj: INewObj[]) => void;
+    page: number;
+    setNewPage: (page: number)=> void;
 };
 // FAVORITE NEWS
 export interface favesNews{

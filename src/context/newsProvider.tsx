@@ -6,9 +6,10 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 const contextDefaultValues: NewsContextState = {
   news: [],
-  setNewNews: () => {}
-};
-
+  setNewNews: () => {},
+  page: 0,
+  setNewPage: ()=> {}
+}
 export const NewsContext = createContext<NewsContextState>(
   contextDefaultValues
 );
@@ -19,11 +20,13 @@ const NewsProvider: FC = ({ children }) => {
   const [item] = useLocalStorage('lastSearch');
   const [faveNews] = useLocalStorage('favesNews', [])
   const [location] = useLocation()
+  const [page, setPage]= useState<number>(contextDefaultValues.page)
+  const setNewPage = (page:number)=> setPage(page)
 
   useEffect(function(){
   //TO get the last news search 
     if (item !== '' && location ==='/') {
-      getNews({ keyword:item }).then((newsRes) => {
+      getNews({ keyword:item , page}).then((newsRes) => {
       const newsArray= newsRes[0];
       setNewNews(newsArray as INewObj[]);
     });
@@ -32,13 +35,15 @@ const NewsProvider: FC = ({ children }) => {
     else if (faveNews.length >0 && location === '/my-faves'){
       if(!!faveNews)setNewNews(faveNews.flat())
       }
-  },[item, location, faveNews])
+  },[item, location, faveNews, page])
 
   return (
     <NewsContext.Provider
       value={{
         news,
-        setNewNews
+        setNewNews,
+        page,
+        setNewPage
       }}
     >
       {children}

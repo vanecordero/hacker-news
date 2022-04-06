@@ -1,0 +1,21 @@
+
+.pagination{
+    list-style-type: none;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+.pagination__page{
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid blue;
+    margin: 0 0.3rem;
+}
+.pagination__page-link{
+    background-color: aqua;
+
+}
