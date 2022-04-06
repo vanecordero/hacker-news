@@ -5,7 +5,6 @@ import TodosProvider from "../../context/newsProvider";
 import { Home } from "../views/home";
 import { ErrorPage } from "../views/ErrorPage";
 import { FavesNews } from "../views/Faves";
-import { Pagination } from "../common/Pagination";
 export const Layout = () => {
   const [location] = useLocation();
 
@@ -15,33 +14,26 @@ export const Layout = () => {
         <h1>Hacker News</h1>
       </header>
 
-      {
-        (location === '/' || location=== '/my-faves') &&(<>
-        <nav className="menu">
-          <Link  
-            href='/'
-            >
-              <span className={`menu__link ${location=== '/'&& 'menu__link--active'}`}>All </span>
-          </Link>
-          <Link  
-            href='/my-faves'
-            >
-              <span className={`menu__link ${location=== '/my-faves'&& 'menu__link--active'}`}>My faves</span>
-          </Link>
-        </nav>
-        </>)
-      }
-      
-      <main>        
+      <nav className="menu">
+        <Link  
+          href='/'
+          >
+            <span className={`menu__link ${location=== '/'&& 'menu__link--active'}`}>All </span>
+        </Link>
+        <Link  
+          href='/my-faves'
+          >
+            <span className={`menu__link ${location=== '/my-faves'&& 'menu__link--active'}`}>My faves</span>
+        </Link>
+      </nav>
+      <main>
+        
           <TodosProvider>
             <Switch>
               <Route component={Home} path="/" />
               <Route component={FavesNews} path="/my-faves" />
               <Route component={ErrorPage} path="/:rest*" />
             </Switch> 
-          {
-            location === '/' && <Pagination/>
-          }
           </TodosProvider>
       </main>
     </section>
