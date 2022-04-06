@@ -3,14 +3,17 @@
   --cars__title-font-color: #767676;
   --border_radius: 6px;
 }
+.nCard_container{
+  padding: 0 1rem;
+}
 .nCard {
   display: flex;
   justify-content: space-between;
-  width: 500px;
-  height: 90px;
+  width: 320px;
+  height: 80px;
   border-radius: var(--border_radius);
   border: solid 1px #979797;
-  margin: 10px;
+  margin: 0.5rem 0;
   overflow: hidden;
 }
 .nCard:hover {
@@ -54,4 +57,22 @@
 .nCard__like--false {
   color: #de2c30;
   font-size: 1.5rem;
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media  screen and (min-width: 768px){
+  .nCard {
+    width: 350px;
+    margin: 0.8rem 0;
+  }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media screen and (min-width: 992px) { 
+  .nCard {
+    width: 500px;
+  }
+  .nCard_container{
+    padding: 0 3rem;
+  }
 }

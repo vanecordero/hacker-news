@@ -3,10 +3,5 @@ body {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
   background-color: #fcfcfc;
-  padding: 0 0.8rem;
 }
 
-.page-title{
-  font-family: 'Libre Baskerville', serif;
-  font-weight: normal;
-}

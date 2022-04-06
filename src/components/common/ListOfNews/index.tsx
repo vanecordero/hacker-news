@@ -85,6 +85,7 @@ export const ListOfNews = ({news}:newsContainer) => {
 
 
   return (<>
+  <div className='nCard_container'>
   {
       news.map((data, i)=>{
         const create_at = timeSince(data['created_at'])
@@ -114,7 +115,8 @@ export const ListOfNews = ({news}:newsContainer) => {
       )
       })
     }
-    
+  </div>  
   <Pagination/>
+  
   </>)
 }

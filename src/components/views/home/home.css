@@ -1,5 +1,24 @@
-.news-container{
+.news-container > div{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+.searchBy{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 0.6rem;
+    padding-top: 1rem;
+}
+
+.searchBy > select{
+    background-color: #fff;
+    padding: 3px 5px;
+    border-radius: 3px;
+}
+/* Large devices (desktops, 992px and up)*/
+@media screen and (min-width: 992px) { 
+    .searchBy{
+        justify-content: start;
+        padding: 0 7rem;;
+    }
 }

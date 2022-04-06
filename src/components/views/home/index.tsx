@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import { useLocation  } from 'wouter';
 import { ListOfNews } from '../../common/ListOfNews'
 import { NewsContext } from '../../../context/newsProvider';
 import { INewObj } from '../../../interfaces/interfaces';
@@ -12,7 +11,6 @@ const news_name = ['Angular', 'Reacts', 'Vuejs'];
 
 export const Home: React.FunctionComponent = () => {
 
-  const [location] = useLocation()
   const {news, setNewNews} = useContext(NewsContext)
   const [item, saveItem] = useLocalStorage('lastSearch');  
 
@@ -30,7 +28,7 @@ export const Home: React.FunctionComponent = () => {
     <>
       <div>
       <form>
-        <div>
+        <div className='searchBy'>
           <select onChange={handleChange} defaultValue={item}>
             <option value='' disabled>Select your news</option>
             {

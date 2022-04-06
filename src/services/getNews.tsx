@@ -10,7 +10,7 @@ const getResponse = (apiResponse:Resp )=> {
     if(Array.isArray(hits)){
         const newsArr = hits.map(objNew=>{
             const {author,story_title, created_at, story_url, story_id } = objNew
-            return {author,story_title, created_at, story_url, story_id }
+            return {author,story_title, created_at, story_url, story_id, nbPages }
         })
         return [newsArr, nbPages]
     }

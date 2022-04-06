@@ -15,13 +15,16 @@ export const NewsContext = createContext<NewsContextState>(
 );
 
 const NewsProvider: FC = ({ children }) => {
+  //Manage pages for the pagination
   const [news, setNews] = useState<INewObj[]>(contextDefaultValues.news);
-  const setNewNews = (newNews: INewObj[]) => setNews(newNews);
+  const setNewNews = (newNews: INewObj[]) => setNews(newNews);  
+  //Manage pages for the pagination
+  const [page, setPage]= useState<number>(contextDefaultValues.page);
+  const setNewPage = (page:number)=> setPage(page);
+  //Manage Storage data
   const [item] = useLocalStorage('lastSearch');
-  const [faveNews] = useLocalStorage('favesNews', [])
-  const [location] = useLocation()
-  const [page, setPage]= useState<number>(contextDefaultValues.page)
-  const setNewPage = (page:number)=> setPage(page)
+  const [faveNews] = useLocalStorage('favesNews', []);
+  const [location] = useLocation();
 
   useEffect(function(){
   //TO get the last news search 
