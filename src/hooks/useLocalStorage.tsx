@@ -13,8 +13,6 @@ function useLocalStorage(itemName:string ='', initialValue:string | INewObj[] ='
     parsedItem = JSON.parse(localStorageItem);
   }
 
-  console.log(parsedItem)
-
   const [item, setItem] = useState(parsedItem);
 
   const saveItem = (itemName:string, newNews: string | INewObj[]) =>{

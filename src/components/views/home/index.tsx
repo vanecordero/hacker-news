@@ -1,8 +1,7 @@
 
 import './home.css';
 import { useContext, useState } from 'react';
-import { Pagination } from '../../common/Pagination'
-import { ListOfNews } from '../../common/ListOfNews'
+import { ListOfNews } from '../../common/ListOfNews';
 import { NewsContext } from '../../../context/newsProvider';
 import { INewObj } from '../../../interfaces/interfaces';
 import getNews from '../../../services/getNews';
@@ -41,8 +40,7 @@ export const Home: React.FunctionComponent = () => {
     setSearch('latestSearch', name);
   }
   }
-
-  console.log(news)
+console.log('render')
   return (
     <>
       <div>
@@ -100,11 +98,9 @@ export const Home: React.FunctionComponent = () => {
           {
             !loading ? (<>
               <ListOfNews news={news} />        
-              <Pagination/>
             </>):(
               <Loading/>
             )
-            
           }
           </div>
         </>)

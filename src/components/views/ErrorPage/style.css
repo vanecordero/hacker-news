@@ -1,0 +1,27 @@
+.Error {
+  text-align: center;
+  padding: 0 1rem;
+  color: #2b2b2b;
+  margin-top: 2rem;
+}
+
+.Error img {
+  width: 100%;
+}
+
+.Error p {
+  font-size: 0.9rem;
+}
+
+.Error__link {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media screen and (min-width: 992px) {
+  .Error img {
+    width: 50%;
+  }
+}

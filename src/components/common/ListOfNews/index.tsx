@@ -85,7 +85,6 @@ export const ListOfNews = ({news}:newsContainer) => {
      
   }
 
-console.log(news)
   return (<>
   <div className='nCard_container'>
   {
