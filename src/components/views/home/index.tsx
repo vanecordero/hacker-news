@@ -41,8 +41,7 @@ export const Home: React.FunctionComponent = () => {
     setSearch('latestSearch', name);
   }
   }
-
-  console.log(news)
+console.log('render')
   return (
     <>
       <div>
@@ -100,11 +99,9 @@ export const Home: React.FunctionComponent = () => {
           {
             !loading ? (<>
               <ListOfNews news={news} />        
-              <Pagination/>
             </>):(
               <Loading/>
             )
-            
           }
           </div>
         </>)
