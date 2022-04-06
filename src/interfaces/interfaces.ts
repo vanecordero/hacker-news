@@ -15,6 +15,8 @@ export type NewsContextState = {
     setNewNews: (newsObj: INewObj[]) => void;
     page: number;
     setNewPage: (page: number)=> void;
+    loading: boolean;
+    setLoad:  (loading: boolean)=> void;
 };
 // FAVORITE NEWS
 export interface favesNews{

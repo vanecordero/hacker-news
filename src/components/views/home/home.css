@@ -1,3 +1,7 @@
+.no-search {
+  text-align: center;
+}
+
 .news-container > div {
   display: flex;
   flex-wrap: wrap;

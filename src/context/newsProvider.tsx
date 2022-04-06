@@ -8,7 +8,9 @@ const contextDefaultValues: NewsContextState = {
   news: [],
   setNewNews: () => {},
   page: 0,
-  setNewPage: ()=> {}
+  setNewPage: ()=> {},
+  loading: true,
+  setLoad: ()=>{}
 }
 export const NewsContext = createContext<NewsContextState>(
   contextDefaultValues
@@ -22,23 +24,31 @@ const NewsProvider: FC = ({ children }) => {
   const [page, setPage]= useState<number>(contextDefaultValues.page);
   const setNewPage = (page:number)=> setPage(page);
   //Manage Storage data
-  const [item] = useLocalStorage('lastSearch');
   const [faveNews] = useLocalStorage('favesNews', []);
   const [location] = useLocation();
+  //loading
+  const [loading, setLoading] = useState<boolean>(contextDefaultValues.loading)
+  const setLoad = (loading:boolean) => setLoading(loading);
 
   useEffect(function(){
   //TO get the last news search 
-    if (item !== '' && location ==='/') {
-      getNews({ keyword:item , page}).then((newsRes) => {
-      const newsArray= newsRes[0];
-      setNewNews(newsArray as INewObj[]);
-    });
-    }
+    let search = localStorage.getItem('latestSearch');
+    if(!!search){
+      let parsedS = JSON.parse(search);
+      if (parsedS !== '' && location ==='/') {
+        setLoad(true);
+        getNews({ keyword:parsedS , page}).then((newsRes) => {
+        const newsArray= newsRes[0];
+        setNewNews(newsArray as INewObj[]);
+        setLoad(false);
+      });
+    }}
     //Get the fav news 
     else if (faveNews.length >0 && location === '/my-faves'){
       if(!!faveNews)setNewNews(faveNews.flat())
       }
-  },[item, location, faveNews, page])
+  },[ location, faveNews, page]);
+  
 
   return (
     <NewsContext.Provider
@@ -46,7 +56,9 @@ const NewsProvider: FC = ({ children }) => {
         news,
         setNewNews,
         page,
-        setNewPage
+        setNewPage,
+        loading,
+        setLoad
       }}
     >
       {children}

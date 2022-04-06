@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import { NewsContext } from '../../../context/newsProvider';
 import { INewObj } from '../../../interfaces/interfaces';
 import { ListOfNews } from '../../common/ListOfNews';
-
+import './style.css'
 
 export const FavesNews: React.FunctionComponent = () => {
 
@@ -19,11 +19,20 @@ export const FavesNews: React.FunctionComponent = () => {
 
   return (
     <>   
-    <section>
-      <div className='news-container'>
-        <ListOfNews news={favs} />
-      </div>
-    </section>
+    {
+        favs.length === 0 ? (<>
+        <h4 className='no-faves'>You don't have any news marked as favorites.</h4>
+        </>)
+        :(<>
+          <section>
+            <div className='news-container'>
+              <ListOfNews news={favs} />
+            </div>
+          </section>
+        </>)
+      }
+      
+    
     </>
   )
 }

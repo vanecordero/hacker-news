@@ -1,0 +1,104 @@
+.skeleton {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.skeleton__card {
+  width: 320px;
+  height: 80px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.skeleton__card :first-child {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.skeleton__card .skeleton__card-avatar {
+  float: left;
+  width: 52px;
+  height: 52px;
+  background-color: #ccc;
+  border-radius: 5px;
+  background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+  animation: shine-avatar 2s infinite linear;
+}
+.skeleton__card .skeleton__card-title {
+  float: left;
+  width: 140px;
+  height: 10px;
+  border-radius: 7px;
+  background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+  animation: shine-lines 2s infinite linear;
+}
+.skeleton__card .skeleton__card-line {
+  float: left;
+  width: 180px;
+  height: 16px;
+  margin-top: 12px;
+  border-radius: 7px;
+  background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+  animation: shine-lines 2s infinite linear;
+}
+.skeleton__card .skeleton__card-avatar + .skeleton__card-line {
+  margin-top: 11px;
+  width: 100px;
+}
+.skeleton__card .skeleton__card-line ~ .skeleton__card-line {
+  background-color: #ddd;
+}
+
+@keyframes shine-lines {
+  0% {
+    background-position: -100px;
+  }
+  40%,
+  100% {
+    background-position: 140px;
+  }
+}
+
+@keyframes shine-avatar {
+  0% {
+    background-position: -32px;
+  }
+  40%,
+  100% {
+    background-position: 208px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media screen and (min-width: 768px) {
+  .skeleton__card {
+    width: 350px;
+    margin: 0.8rem 0;
+  }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media screen and (min-width: 992px) {
+  .skeleton {
+    padding: 0 3rem;
+  }
+  .skeleton__card {
+    width: 500px;
+  }
+
+  .skeleton__card :first-child {
+    width: 90%;
+  }
+  .skeleton__card .skeleton__card-title {
+    width: 180px;
+  }
+  .skeleton__card .skeleton__card-line {
+    width: 350px;
+  }
+}

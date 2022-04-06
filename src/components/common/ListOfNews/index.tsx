@@ -5,7 +5,6 @@ import { INewObj } from '../../../interfaces/interfaces';
 import { NewsContext } from '../../../context/newsProvider';
 import { useLocation } from 'wouter';
 import './listOfNews.css'
-import {Pagination} from '../Pagination'
 
 interface ITimer{
   dateType: string;
@@ -29,7 +28,7 @@ export const ListOfNews = ({news}:newsContainer) => {
   useEffect(function(){
     let favNewsItem = localStorage.getItem('favesNews');
     if(!!favNewsItem)setFavesNews(JSON.parse(favNewsItem).flat());
-  }, [news])
+  }, [news]);
 
   //save on the localStorage the favorite news
   useEffect(function(){    
@@ -67,14 +66,17 @@ export const ListOfNews = ({news}:newsContainer) => {
     if(favesNews.some(e => (e.story_id === story_id && e.author === author && e.created_at === created_at))){
 
       //I use all those conditions bc there its some news how has the same Title_id 
-      let index = favesNews.findIndex(elem=>(
+      const index = favesNews.findIndex(elem=>(
         elem.story_id === story_id && elem.author === author && elem.created_at === created_at
       ))
-      setFavesNews(favesNews.filter((ele, i)=> i !== index))
-      
-      if(Location==='/my-faves'){ //UnMark Favorite for my faves screen
-        setNewNews(favesNews.filter((ele, i)=> i !== index));
-        localStorage.setItem('favesNews', JSON.stringify([favesNews.filter((ele, i)=> i !== index)]))
+      const filteNews = favesNews.filter((ele, i)=> i !== index);
+
+      setFavesNews(filteNews); 
+      if(filteNews.length===0) localStorage.setItem('favesNews', JSON.stringify([filteNews]));
+
+      if(Location==='/my-faves'){ //UnMark Favorite for my faves screen        
+        setNewNews(filteNews);
+        localStorage.setItem('favesNews', JSON.stringify([filteNews]));
       }    
     }
     else {     
@@ -83,7 +85,7 @@ export const ListOfNews = ({news}:newsContainer) => {
      
   }
 
-
+console.log(news)
   return (<>
   <div className='nCard_container'>
   {
@@ -115,8 +117,6 @@ export const ListOfNews = ({news}:newsContainer) => {
       )
       })
     }
-  </div>  
-  <Pagination/>
-  
+  </div>    
   </>)
 }
