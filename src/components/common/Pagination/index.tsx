@@ -9,7 +9,7 @@ interface objPage{
 
 export const Pagination = () => {
   
-  const {page, setNewPage, news} = useContext(NewsContext);
+  const {setNewPage} = useContext(NewsContext);
   const totalPage = 50;
 
   const handleClick=(data:objPage)=>{
