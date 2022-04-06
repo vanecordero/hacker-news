@@ -7,7 +7,6 @@ interface searchProps{
 }
 const getResponse = (apiResponse:Resp )=> {
     const {hits, nbPages} = apiResponse;
-    console.log(hits)
     if(Array.isArray(hits)){
         const newsArr = hits.map(objNew=>{
             const {author,story_title, created_at, story_url, story_id } = objNew

@@ -1,14 +1,17 @@
+import { useContext, useEffect, useState } from 'react';
+import { FaRegHeart, FaHeart, FaRegClock } from 'react-icons/fa'
 import { newsContainer } from '../../../interfaces/interfaces'
-import {FaRegHeart, FaHeart, FaRegClock} from 'react-icons/fa'
+import { INewObj } from '../../../interfaces/interfaces';
+import { NewsContext } from '../../../context/newsProvider';
+import { useLocation } from 'wouter';
 import './listOfNews.css'
-import { useEffect, useState } from 'react';
-import {INewObj} from '../../../interfaces/interfaces'
+
 
 interface ITimer{
   dateType: string;
   seconds: number;
 }
-const times:ITimer[] = [
+const times:ITimer[] = [ //Timer object for the "timeSince" function
   { dateType: 'year', seconds: 31536000 },
   { dateType: 'month', seconds: 2592000 },
   { dateType: 'day', seconds: 86400 },
@@ -19,7 +22,9 @@ const times:ITimer[] = [
 
 export const ListOfNews = ({news}:newsContainer) => {
 
- const [favesNews, setFavesNews] = useState<INewObj[]>([])
+  const {setNewNews} = useContext(NewsContext)
+  const [favesNews, setFavesNews] = useState<INewObj[]>([])
+  const [Location] = useLocation()
 
   useEffect(function(){
     let favNewsItem = localStorage.getItem('favesNews');
@@ -28,7 +33,7 @@ export const ListOfNews = ({news}:newsContainer) => {
 
   //save on the localStorage the favorite news
   useEffect(function(){    
-    localStorage.setItem('favesNews', JSON.stringify([favesNews]));
+    if(favesNews.length>0)localStorage.setItem('favesNews', JSON.stringify([favesNews]));
   }, [favesNews])
 
   // Convert create_at to times ago
@@ -54,7 +59,7 @@ export const ListOfNews = ({news}:newsContainer) => {
     window.open(url,'_blank','noopener noreferrer')
   }
 
-  // Mark as favorite a news
+  // Toogle as favorite a news
   const makeFavorite = (newsFavObj:INewObj)=>{
     const {story_id, author, created_at}=newsFavObj
     
@@ -66,10 +71,14 @@ export const ListOfNews = ({news}:newsContainer) => {
         elem.story_id === story_id && elem.author === author && elem.created_at === created_at
       ))
       setFavesNews(favesNews.filter((ele, i)=> i !== index))
+      
+      if(Location==='/my-faves'){ //UnMark Favorite for my faves screen
+        setNewNews(favesNews.filter((ele, i)=> i !== index));
+        localStorage.setItem('favesNews', JSON.stringify([favesNews.filter((ele, i)=> i !== index)]))
+      }    
     }
     else {     
-    setFavesNews(favNews=>[...favNews.flat(), newsFavObj]);
-      
+      setFavesNews(favNews=>[...favNews.flat(), newsFavObj]);      
     }
      
   }
@@ -77,7 +86,6 @@ export const ListOfNews = ({news}:newsContainer) => {
 
   return (<>
     {
-      
       news.map((data, i)=>{
         const create_at = timeSince(data['created_at'])
        return(

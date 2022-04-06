@@ -1,9 +1,10 @@
 import { Route, Switch } from "wouter";
+import { Link  } from 'wouter';
+import TodosProvider from "../../context/newsProvider";
 import { Home } from "../views/home";
 import { ErrorPage } from "../views/ErrorPage";
-import TodosProvider from "../../context/newsProvider";
 import { FavesNews } from "../views/Faves";
-import { Link  } from 'wouter';
+
 export const Layout = () => {
   return (
     <>
@@ -16,7 +17,7 @@ export const Layout = () => {
         className='nav__link'
         href='/'
         >
-          <span>Alll</span>
+          <span>All </span>
       </Link>
       <Link  
         className='nav__link'
@@ -28,11 +29,11 @@ export const Layout = () => {
 
     
       <TodosProvider>
-        {/* <Switch> */}
+        <Switch>
           <Route component={Home} path="/" />
           <Route component={FavesNews} path="/my-faves" />
-          {/* <Route component={ErrorPage} path="/my-faves/:rest*" /> */}
-        {/* </Switch> */}
+          <Route component={ErrorPage} path="/:rest*" /> 
+        </Switch> 
       </TodosProvider>
   </section>
     </>

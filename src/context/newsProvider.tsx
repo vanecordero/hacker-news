@@ -1,8 +1,8 @@
 import { createContext, useState, FC, useEffect } from "react";
+import { useLocation  } from 'wouter';
 import { NewsContextState, INewObj } from "../interfaces/interfaces";
 import getNews from "../services/getNews";
 import useLocalStorage from "../hooks/useLocalStorage";
-import { useLocation  } from 'wouter';
 
 const contextDefaultValues: NewsContextState = {
   news: [],
@@ -13,32 +13,26 @@ export const NewsContext = createContext<NewsContextState>(
   contextDefaultValues
 );
 
-const TodosProvider: FC = ({ children }) => {
+const NewsProvider: FC = ({ children }) => {
   const [news, setNews] = useState<INewObj[]>(contextDefaultValues.news);
   const setNewNews = (newNews: INewObj[]) => setNews(newNews);
   const [item] = useLocalStorage('lastSearch');
   const [faveNews] = useLocalStorage('favesNews', [])
   const [location] = useLocation()
 
-  //TO get the last news search
   useEffect(function(){
+  //TO get the last news search 
     if (item !== '' && location ==='/') {
-      console.log('in all')
       getNews({ keyword:item }).then((newsRes) => {
       const newsArray= newsRes[0];
       setNewNews(newsArray as INewObj[]);
     });
     }
-    else if (location !=='' && location === '/my-faves'){
-      if(!!faveNews){ 
-        console.log('insert data')
-        console.log(faveNews)
-        setNews(faveNews)
-      }
+    //Get the fav news 
+    else if (faveNews.length >0 && location === '/my-faves'){
+      if(!!faveNews)setNewNews(faveNews.flat())
       }
   },[item, location, faveNews])
-
-  console.log(news)
 
   return (
     <NewsContext.Provider
@@ -53,4 +47,4 @@ const TodosProvider: FC = ({ children }) => {
   
 };
 
-export default TodosProvider;
+export default NewsProvider;

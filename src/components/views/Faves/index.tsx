@@ -1,26 +1,27 @@
-import {useEffect, useState, useContext} from 'react';
-import { ListOfNews } from '../../common/ListOfNews'
+import { useEffect, useState, useContext } from 'react';
 import { NewsContext } from '../../../context/newsProvider';
-import {useLocation} from 'wouter';
+import { INewObj } from '../../../interfaces/interfaces';
+import { ListOfNews } from '../../common/ListOfNews';
 
 
 export const FavesNews: React.FunctionComponent = () => {
-  const [location] = useLocation()
-  const {news, setNewNews} = useContext(NewsContext)
 
+  const {news} = useContext(NewsContext)
+  const [favs, setFavs] = useState<INewObj[]>([])
 
+  //Update if some fave news its unlike
   useEffect(function(){
-    
-  }, [])
+    const faveNews =  localStorage.getItem('favesNews');
+    if (!!faveNews){ 
+      if(faveNews.length >0)setFavs(JSON.parse(faveNews).flat())
+      }
+  }, [news])
 
-
-console.log(location)
-console.log(news)
   return (
     <>   
     <section>
       <div className='news-container'>
-        <ListOfNews news={news} />
+        <ListOfNews news={favs} />
       </div>
     </section>
     </>
